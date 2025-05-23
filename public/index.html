@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insuredmine</title>
+<style>
+    a{
+        color: blue;
+    }
+</style>
+</head>
+<body>
+
+<h1>API List</h1>
+
+<a target="_blank" href="/agents">Agents List</a> &nbsp; 
+<a target="_blank" href="/carrier">Company List</a> &nbsp; 
+<a target="_blank" href="/users">User List</a> &nbsp; 
+<a target="_blank" href="/policy/list">Policy List</a> &nbsp; 
+<a target="_blank" href="/policy/details">Policy Details</a> &nbsp; 
+<a target="_blank" href="/policy/items?policy_number=YEEX9MOIBU7X">Search By Policy Number</a> &nbsp; 
+<a target="_blank" href="/policy/details?username=maikelnai@msn.com">Search By Emailid</a> &nbsp; 
+<a target="_blank" href="/policy/truncate">Truncate Data</a> &nbsp; 
+
+<p>Task 1:</p>
+
+<p>1) Done : Create an API  to upload the attached XLSX/CSV data into MongoDB. (Please accomplish this using worker threads)</p>
+<form action="/upload" enctype="multipart/form-data" method="post">
+    <input type="file" name="file" style="border: 1px solid;" />
+    <input type="submit" value="Submit" />
+</form>
+<hr />
+<p>2) Done : Search API to find policy info with the help of the username.</p>
+<form action="/policy/details" method="get">
+    <input type="text" name="username" value="" placeholder="Email Id" />
+    <input type="submit" value="Submit" />
+</form>
+<hr />
+<p>3) Done : API to provide aggregated policy by each user.</p>
+<p>4) Done : Consider each info as a different collection in MongoDB </p>
+<ul style="list-style: none; padding: 0; margin: 0;">
+    <li style="display: inline-block; margin-right: 15px;">
+      <a target="_blank" href="/agents">Agents List</a>
+    </li>
+    <li style="display: inline-block; margin-right: 15px;">
+      <a target="_blank" href="/users">User List</a>
+    </li>
+    <li style="display: inline-block; margin-right: 15px;">
+      <a target="_blank" href="/accounts">User's Account</a>
+    </li>
+    <li style="display: inline-block; margin-right: 15px;">LOB</li>
+    <li style="display: inline-block; margin-right: 15px;">
+      <a target="_blank" href="/carrier">Carrier List</a>
+    </li>
+    <li style="display: inline-block; margin-right: 15px;">
+      <a target="_blank" href="/policy/list">Policy List</a>
+    </li>
+  </ul>
+  
+</p>
+
+<hr />
+<p>Task 2:</p>
+<p>1) Track real-time CPU utilization of the node server and on 70% usage restart the server.</p>
+<p>2) Create a post-service that takes the message, day, and time in body parameters and it inserts that message into DB at that particular day and time.</p>
+<form action="/messageboard" method="post">
+    <input type="text" name="message" />
+    <input type="date" name="msgdtd" />
+    <input type="time" name="msgtime" />
+    <input type="submit" value="Submit" style="cursor: pointer;" />
+</form>
+<hr />
+</body>
+</html>
