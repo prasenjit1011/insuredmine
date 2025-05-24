@@ -22,7 +22,7 @@ exports.handleUpload = (req, res) => {
   fs.rename(filePath, newFilePath, (err) => {
     if (err) return res.status(500).json({ error: 'File move failed: ' + err.message });
 
-    const worker = new Worker(path.resolve(__dirname, '../workers/upload.worker.js'), {
+    const worker = new Worker(path.resolve(__dirname, '../upload.worker.js'), {
       workerData: { filePath: newFilePath, originalName }
     });
 

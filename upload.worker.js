@@ -2,13 +2,12 @@ const { parentPort, workerData } = require('worker_threads');
 const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
-const Record = require('../models/Record');
-const Agent = require('../models/Agent');
-const Category = require('../models/Category');
-const Company = require('../models/Company');
-const User = require('../models/User');
-const Policy = require('../models/Policy');
-const Account = require('../models/Account');
+const Agent = require('./models/Agent');
+const Category = require('./models/Category');
+const Company = require('./models/Company');
+const User = require('./models/User');
+const Policy = require('./models/Policy');
+const Account = require('./models/Account');
 require('dotenv').config();
 
 // Connect to MongoDB
@@ -32,8 +31,6 @@ const insertUniqueByUser = async (records, field, Model) => {
 
     const userinfo = new Map();
     duplicates.sort((a, b) => a.email.localeCompare(b.email)).map((val)=>{
-        //console.log(val)
-        //console.log(val.userType, ' | ', val.email)
         userinfo.set(val.email, val);
       });
 

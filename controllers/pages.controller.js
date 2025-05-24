@@ -6,7 +6,6 @@ const path = require('path');
 const { Worker } = require('worker_threads');
 const User = require('../models/User');
 const Account = require('../models/Account');
-const Record = require('../models/Record');
 const Message = require('../models/Message');
 
 
@@ -160,7 +159,6 @@ exports.getPolicyDetails = async (req, res, next) => {
 }
 
 exports.getPolicyTruncate =  async (req, res) => {
-      //await Record.deleteMany();
       await User.deleteMany();
       await Policy.deleteMany();
   
