@@ -19,10 +19,4 @@ router.get('/policy/truncate', pagesCtrl.getPolicyTruncate);
 router.post('/messageboard', pagesCtrl.messageboard);
 
 
-
-
-
-
-//router.post('/upload', upload.single('file'),  pagesCtrl.uploadPolicy);
-
 module.exports  = router;

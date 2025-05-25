@@ -180,32 +180,3 @@ exports.messageboard = async (req, res) => {
   res.json({ message: `Successfully message added.`, data });
 }
 
-
-exports.uploadPolicy = async (req, res) => {
-    const filePath = req.file.path;
-    const originalName = req.file.originalname;
-  
-    const worker = new Worker(path.resolve(__dirname, 'workers/upload.worker.js'), {
-      workerData: { filePath, originalName }
-    });
-  
-    worker.on('message', (result) => {
-      if (result.status === 'success') {
-        res.json({ message: `Successfully uploaded ${result.count} records.` });
-      } 
-      else {
-        res.status(500).json({ error: result.message });
-      }
-    });
-  
-    worker.on('error', (err) => {
-      res.status(500).json({ error: 'Worker thread failed: ' + err.message });
-    });
-  
-    worker.on('exit', (code) => {
-      if (code !== 0) {
-        console.error(`Worker stopped with exit code ${code}`);
-        res.status(400).json({ message: 'Worker stopped with exit code.' });
-      }
-    });
-  }
