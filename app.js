@@ -3,11 +3,25 @@ console.clear();
 console.log(`\n\n-------------------- ${new Date().toISOString()} --------------------`);
 
 require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
+const express   = require('express');
+const helmet    = require('helmet');
+const rateLimit = require('express-rate-limit');
+const cors      = require('cors');
+const mongoose  = require('mongoose');
+const PORT      = process.env.PORT || 3000;
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: false,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+
+// Security Middleware
+app.use(helmet());
+app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
+app.use(cors(corsOptions));
 
 // Middleware
 app.use(express.static('public'));
