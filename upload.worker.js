@@ -101,7 +101,8 @@ function transformRecord(record, agentDetails, companyDetails, categoryDetails, 
       const workbook = XLSX.readFile(filePath);
       const sheet = workbook.Sheets[workbook.SheetNames[0]];
       records = XLSX.utils.sheet_to_json(sheet);
-    } else if (ext === '.csv') {
+    } 
+    else if (ext === '.csv') {
       const { parse } = require('csv-parse/sync');
       const content = fs.readFileSync(filePath, 'utf-8');
       records = parse(content, { columns: true, skip_empty_lines: true });//.slice(0,5);

@@ -32,7 +32,7 @@ setInterval(() => {
 
   startMeasure = endMeasure;
 
-  if (cpuUsage > 70) {
+  if (cpuUsage > 700) {
     console.warn('⚠️ High CPU Usage Detected. Restarting server...');
     exec(`pm2 restart ${process.env.PM2_APP_NAME || 'app'}`, (err, stdout, stderr) => {
       if (err) {
